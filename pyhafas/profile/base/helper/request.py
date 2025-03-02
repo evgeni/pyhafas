@@ -74,6 +74,9 @@ class BaseRequestHelper(RequestHelperInterface):
         self.request_session.mount("http://", adapter)
         self.request_session.mount("https://", adapter)
 
+    def disable_verify(self: ProfileInterface) -> None:
+        self.request_session.verify = False
+
     def request(self: ProfileInterface, body) -> HafasResponse:
         """
         Sends the request and does a basic parsing of the response and error handling
